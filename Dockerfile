@@ -1,4 +1,11 @@
-FROM ubuntu:latest
-LABEL authors="User"
+FROM python:alpine
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+
+COPY . .
+
+RUN echo "4" > Scores.txt
+
+RUN pip install -r req.txt
+
+CMD ["python", "-m", "tests.e2e"]

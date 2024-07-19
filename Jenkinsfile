@@ -4,17 +4,22 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building docker..'
+            }
+        }
+        stage('Run') {
+            steps {
+                echo 'Running Docker and mount Scores.txt(score 1 - 1000)..'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'python -m tests.e2e..'
             }
         }
-        stage('Deploy') {
+        stage('Finalize') {
             steps {
-                echo 'Deploying....'
+                echo 'Terminate container and push to docker hub....'
             }
         }
     }
