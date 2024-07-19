@@ -1,8 +1,6 @@
-import guess_game
-import currency_roulette_game
-import memory_game
-from utils import get_input_digit
-from score import add_score
+from games import memory_game, currency_roulette_game, guess_game
+from utils.utils import get_input_digit
+from front.score import add_score
 
 
 def _select_game():

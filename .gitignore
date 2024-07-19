@@ -1,4 +1,5 @@
 /wog.zip
 /.idea/*
+/*/__pycache__
 /__pycache__/*
 /Scores.txt

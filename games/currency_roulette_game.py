@@ -1,5 +1,5 @@
 from currency_converter import CurrencyConverter
-from utils import get_input_digit
+from utils.utils import get_input_digit
 import random
 
 
