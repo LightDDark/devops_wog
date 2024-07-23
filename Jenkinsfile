@@ -15,9 +15,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'python3 -m venv .venv'
-                sh '. .venv/bin/activate'
-                sh 'pip install selenium'
-                sh 'python3 ./tests/e2e.py'
+                sh '.venv/bin/pip install selenium'
+                sh '.venv/bin/python ./tests/e2e.py'
             }
         }
         stage('Finalize') {
