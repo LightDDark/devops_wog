@@ -29,8 +29,8 @@ pipeline {
     }
     post {
         always {
-            sh 'docker stop $(sudo docker ps -aq)'
-            sh 'docker rm $(sudo docker ps -aq)'
+            sh 'docker stop $(docker ps -aq)'
+            sh 'docker rm $(docker ps -aq)'
         }
     }
 }
