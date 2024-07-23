@@ -5,4 +5,5 @@ WORKDIR /app
 COPY ./front .
 COPY ./utils .
 
-CMD ["python", "-m", "front.main_score"]
+#CMD ["python", "-m", "front.main_score"]
+CMD ["ls"]
