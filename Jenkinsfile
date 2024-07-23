@@ -14,10 +14,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'python -m venv .venv'
+                sh 'python3 -m venv .venv'
                 sh '. .venv/bin/activate'
                 sh 'pip install selenium'
-                sh 'python ./tests/e2e.py'
+                sh 'python3 ./tests/e2e.py'
             }
         }
         stage('Finalize') {
@@ -29,8 +29,8 @@ pipeline {
     }
     post {
         always {
-            sh 'docker stop $(docker ps -q)'
-            sh 'docker rm $(docker ps -a -q)'
+            sh 'sudo docker stop $(sudo docker ps -aq)'
+            sh 'sudo docker rm $(sudo docker ps -aq)'
         }
     }
 }
