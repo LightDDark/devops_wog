@@ -4,23 +4,33 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building docker..'
+                sh 'docker compose build'
             }
         }
         stage('Run') {
             steps {
-                echo 'Running Docker and mount Scores.txt(score 1 - 1000)..'
+                sh 'docker compose up -d'
             }
         }
         stage('Test') {
             steps {
-                echo 'python -m tests.e2e..'
+                sh 'python -m venv .venv'
+                sh '. .venv/bin/activate'
+                sh 'pip install selenium'
+                sh 'python ./tests/e2e.py'
             }
         }
         stage('Finalize') {
             steps {
-                echo 'Terminate container and push to docker hub....'
+                sh 'docker compose down'
+                sh 'docker push oryehezkel/wog'
             }
+        }
+    }
+    post {
+        always {
+            sh 'docker stop $(docker ps -q)'
+            sh 'docker rm $(docker ps -a -q)'
         }
     }
 }

@@ -2,10 +2,7 @@ FROM python:alpine
 
 WORKDIR /app
 
-COPY . .
+COPY ./front .
+COPY ./utils .
 
-RUN echo "4" > Scores.txt
-
-RUN pip install -r req.txt
-
-CMD ["python", "-m", "tests.e2e"]
+CMD ["python", "-m", "front.main_score"]
