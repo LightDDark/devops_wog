@@ -2,8 +2,9 @@ FROM python:alpine
 
 WORKDIR /app
 
-COPY ./front .
-COPY ./utils .
+COPY front ./front
+COPY utils ./utils
 
-#CMD ["python", "-m", "front.main_score"]
-CMD ["ls"]
+RUN pip install --no-cache-dir Flask
+
+CMD ["python", "-m", "front.main_score"]

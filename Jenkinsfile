@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh 'python3 -m venv .venv'
                 sh '.venv/bin/pip install selenium'
-                sh '.venv/bin/python ./tests/e2e.py'
+                sh '.venv/bin/python ./tests/e2e.py http://localhost:8777'
             }
         }
         stage('Finalize') {
@@ -30,6 +30,7 @@ pipeline {
         always {
             sh 'docker stop $(docker ps -aq)'
             sh 'docker rm $(docker ps -aq)'
+            sh 'docker rmi -f oryehezkel/wog'
         }
     }
 }
