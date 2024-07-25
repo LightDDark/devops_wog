@@ -4,7 +4,7 @@ import sys
 
 
 def test_score_service(url):
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     driver.implicitly_wait(5)
     driver.get(url)
     score = int(driver.find_element(By.ID, 'score').text)
