@@ -27,10 +27,14 @@ pipeline {
         }
     }
     post {
-        always {
-            sh 'docker stop $(docker ps -aq)'
-            sh 'docker rm $(docker ps -aq)'
-            sh 'docker rmi -f oryehezkel/wog'
+        failure {
+            sh 'docker stop $(docker ps -aq) || true'
+            sh 'docker rm $(docker ps -aq) || true'
+        }
+        cleanup {
+            sh 'docker compose down || true'
+            sh 'docker rmi -f oryehezkel/wog || true'
+            sh 'docker system prune -af || true'
         }
     }
 }
